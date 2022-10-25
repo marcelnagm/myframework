@@ -43,6 +43,8 @@ class Product extends Model {
 
     public function toArray() {
         $data = parent::toArray();
+        unset($data['created_at']);
+        unset($data['updated_at']);
         $data['categories'] = $this->categories()->get();
         $data['items'] = $this->items()->get();
         return $data;

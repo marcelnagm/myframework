@@ -34,5 +34,8 @@ class ProductCategory extends Model {
     public function __toString(): string {
         return Category::find($this->category_id);
     }
-
+   
+    public function toArray() {
+        return [$this->category_id];
+    }
 }

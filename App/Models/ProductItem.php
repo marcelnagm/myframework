@@ -30,7 +30,10 @@ class ProductItem extends Model {
         'quantity'
     ];
 
-    
+    public function toArray() {
+        return [$this->type,
+        $this->quantity ];
+    }
  
     
 }
