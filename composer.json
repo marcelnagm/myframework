@@ -1,0 +1,20 @@
+{
+    "name": "marcel/assessment-backend-xp",
+    "description": "Teste para entrada no WebJump",
+    "autoload": {
+        "psr-4": {
+            "Marcel\\AssessmentBackendXp\\": "src/",
+            "Marcel\\AssessmentBackendXp\\": "App/"
+            
+        }
+    },
+    "authors": [
+        {
+            "name": "Marcel Nagm",
+            "email": "marcel.nagm@gmail.com"
+        }
+    ],
+    "require": {
+        "illuminate/database": "^8.83"
+    }
+}
