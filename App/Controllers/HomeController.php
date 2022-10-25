@@ -2,17 +2,16 @@
 
 namespace App\Controllers;
 
-use Controller\BaseController;
+use App\Controllers\BaseController,
+App\Models\Product;
+    
 
-class HomeController
-//extends BaseController
-{
-    
-    public function index(){
-        echo 'aqui';
+class HomeController extends BaseController {
+
+    public function index() {
+        foreach (Product::all() as $p) {
+            echo $p;
+        }
     }
-    
-    
-    
-    
+
 }

@@ -3,13 +3,15 @@
 namespace App;
 
 use App\Router;
+use Symfony\Component\HttpFoundation\Request;
 
 class Kernel {
 
     static function start() {
-        $uri =  $_SERVER['REQUEST_URI'];
+        $request = Request::createFromGlobals();
+
         $router = new Router();
-        $router->resolve($uri);
+       return $router->resolve($request);
     }
 
 }

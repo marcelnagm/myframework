@@ -16,6 +16,7 @@
     ],
     "require": {
         "illuminate/database": "^8.83",
-        "vlucas/phpdotenv": "^5.5"
+        "vlucas/phpdotenv": "^5.5",
+        "symfony/http-foundation": "^5.4"
     }
 }

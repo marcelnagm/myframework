@@ -5,7 +5,8 @@ namespace App;
 use App\Controller\HomeController;
 use App\Controller\BaseController;
 
-
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 class Router{
     
     private $routes;
@@ -15,11 +16,11 @@ class Router{
     }
     
     
-    public function resolve($url) {
+    public function resolve(Request $request) {
 //        echo 'in';
 //        Debuger::dd($this->routes);
         foreach ($this->routes as $route => $controller){
-            if($route == $url){
+            if($route == $request->getPathInfo()){
                 
                 echo $route;
                return  $this->call($controller);
@@ -34,7 +35,7 @@ class Router{
 //     new HomeController()->index();
      $control = new $actions[0]();
      $method = $actions[1];
-     $control->$method();
+    return  $control->$method();
 
     }
     
