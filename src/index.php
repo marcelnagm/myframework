@@ -11,6 +11,6 @@ foreach (glob("../config/*.php") as $filename)
     require $filename;
 }
 
-//print($capsule);
+use App\Kernel;
 
-//
+Kernel::start();

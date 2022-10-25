@@ -3,7 +3,6 @@
 
 use Illuminate\Database\Capsule\Manager as Capsule;
 
-
 $capsule = new Capsule;
 $capsule->addConnection([
    "driver" => "mysql",
@@ -14,5 +13,3 @@ $capsule->addConnection([
 ]);
 $capsule->setAsGlobal();
 $capsule->bootEloquent();
-
-echo 'eee';

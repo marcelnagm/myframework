@@ -4,7 +4,7 @@
     "autoload": {
         "psr-4": {
             "Marcel\\AssessmentBackendXp\\": "src/",
-            "Marcel\\AssessmentBackendXp\\": "App/"
+            "App\\": "App/"
             
         }
     },
@@ -15,6 +15,7 @@
         }
     ],
     "require": {
-        "illuminate/database": "^8.83"
+        "illuminate/database": "^8.83",
+        "vlucas/phpdotenv": "^5.5"
     }
 }

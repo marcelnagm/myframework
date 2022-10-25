@@ -1,7 +1,7 @@
 <?php
 
-namespace Routes;
-
 return [
-  'path' => 'Controller'  
+    'path' => 'Controller',
+    '/index' => 'App\Controllers\HomeController@index',
+    
 ];
