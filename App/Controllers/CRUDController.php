@@ -9,7 +9,7 @@ use App\Controllers\BaseController,
 class CRUDController extends BaseController {
 
     protected $model = '';
-    
+
     public function index(Request $request) {
 
         $data['total'] = $this->model::count();
@@ -33,13 +33,25 @@ class CRUDController extends BaseController {
         return $this->dispatch($p);
     }
 
-    public function update(Request $request) {
-        echo $request->get('id');
+    public function show(Request $request) {
+
 
         $p = $this->model::find($request->get('id'));
         if ($p == null)
             return $this->dispatch(['nao encontrado']);
-        
+
+
+
+        return $this->dispatch($p);
+    }
+
+    public function update(Request $request) {
+
+
+        $p = $this->model::find($request->get('id'));
+        if ($p == null)
+            return $this->dispatch(['nao encontrado']);
+
         foreach (array_keys($this->model::$rules) as $field) {
             $data[$field] = $request->get($field);
         }
@@ -51,7 +63,7 @@ class CRUDController extends BaseController {
     }
 
     public function delete(Request $request) {
-        echo $request->get('id');
+
 
         $p = $this->model::find($request->get('id'));
 
@@ -59,7 +71,7 @@ class CRUDController extends BaseController {
             return $this->dispatch(['nao encontrado']);
         $p->delete();
 
-        return $this->dispatch($p);
+        return $this->dispatch(['Removed: ' => $p->id]);
     }
 
 }

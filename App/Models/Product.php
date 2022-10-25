@@ -18,7 +18,7 @@ class Product extends Model {
     ];
     protected $perPage = 5;
     
-    static $onpage = 1;
+    static $onpage = 5;
 
     /**
      * Attributes that should be mass-assignable.
