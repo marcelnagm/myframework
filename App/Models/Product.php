@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\ProductCategory,
+    App\Models\ProductItem,\App\Traits\IsTraceable;
 
 class Product extends Model {
 
+    use IsTraceable;
     protected $table = 'product';
     static $rules = [
         'name' => 'required',
@@ -21,34 +24,26 @@ class Product extends Model {
      * @var array
      */
     protected $fillable = [
-        'name'    ,
+        'name',
         'price',
         'description',
         'SKU'];
-    
-    
 
-    public static function boot() {
-        parent::boot();
-        static::creating(function ($model) {
-            $user = auth()->guard('api')->user();
-            if ($user != null) {
-                $model->created_by = $user->id;
-                $model->user_id = $user->id;
-                $model->updated_by = $user->id;
-            }
-        });
-        static::updating(function ($model) {
-            $user = auth()->guard('api')->user();
-            if ($user != null) {
-                $model->updated_by = $user->id;
-            }
-        });
-        
-        
+  
+
+    function categories() {
+        return ProductCategory::where('product_id', $this->id);
     }
 
-    
-    
-    
+    function items() {
+        return ProductItem::where('product_id', $this->id);
+    }
+
+    public function toArray() {
+        $data = parent::toArray();
+        $data['categories'] = $this->categories()->get();
+        $data['items'] = $this->items()->get();
+        return $data;
+    }
+
 }

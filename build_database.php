@@ -47,6 +47,16 @@ Capsule::schema()->create('product_item', function ($table) {
 //    $table->foreign('created_by')->references('id')->on('users');
 //    $table->foreign('updated_by')->references('id')->on('users');
 });
+Capsule::schema()->create('product_category', function ($table) {
+    $table->id();
+    $table->unsignedBigInteger('product_id')->nullable(true);    
+    $table->unsignedBigInteger('category_id')->nullable(true);    
+    $table->timestamps();
+    $table->unsignedBigInteger('created_by')->nullable(true);
+    $table->unsignedBigInteger('updated_by')->nullable(true);
+//    $table->foreign('created_by')->references('id')->on('users');
+//    $table->foreign('updated_by')->references('id')->on('users');
+});
 
 Capsule::schema()->create('category', function ($table) {
     $table->id();
