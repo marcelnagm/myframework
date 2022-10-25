@@ -14,9 +14,11 @@ class Product extends Model {
         'name' => 'required',
         'price' => 'required',
         'description' => 'required',
-        'SKU' => 'nullabe',
+        'SKU' => 'required',
     ];
-    protected $perPage = 20;
+    protected $perPage = 5;
+    
+    static $onpage = 1;
 
     /**
      * Attributes that should be mass-assignable.

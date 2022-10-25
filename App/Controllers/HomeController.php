@@ -2,16 +2,17 @@
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController,
-App\Models\Product;
-    
+use App\Controllers\BaseController
+,Symfony\Component\HttpFoundation\Request;
 
 class HomeController extends BaseController {
 
-    public function index() {
-        foreach (Product::all() as $p) {
-            echo $p;
-        }
+    public function index(Request $request) {
+        $data = [
+            'msg' => 'Bem vindo ao nosso sitema, se voce esta vendo esta mensagem o sistema esta ok'
+        ];
+
+        $this->dispatch($data);
     }
 
 }

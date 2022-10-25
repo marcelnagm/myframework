@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\Category;
 use App\Traits\HasProduct,\App\Traits\IsTraceable;
 
 class ProductCategory extends Model {
@@ -30,7 +30,9 @@ class ProductCategory extends Model {
     
 
  
-
+        public function __toString(): string {
+            return Category::find($this->category_id);
+        }
     
     
     

@@ -46,3 +46,10 @@ Envie um email para [carreira@webjump.com.br] com o link do seu repositório.
 O repositório do teste precisa ser público. 
 
 Qualquer dúvida sobre o teste, fique a vontade para entrar em contato conosco.
+
+
+#Edit Marcel
+
+Foi adicionado o link do postman utilizado para testar o backend
+para accesar utilizar o link abaixo
+https://app.getpostman.com/join-team?invite_code=5929ca47a5c4231d73f51186a2336a82&target_code=635fb825aa3069e565f34666f45f662a
