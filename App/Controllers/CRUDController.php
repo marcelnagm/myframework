@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use Symfony\Component\HttpFoundation\Request;
 use App\Controllers\BaseController,
-    App\Models\Product;
+    App\Models\Product,    App\Validator\FieldValidator;
 
 class CRUDController extends BaseController {
 
@@ -22,15 +22,19 @@ class CRUDController extends BaseController {
 
     public function store(Request $request) {
 
+        
+        return $this->dispatch($this->persist($request));
+    }
+    
+    public function persist(Request $request){
+        
 
-        foreach (array_keys($this->model::$rules) as $field) {
-            $data[$field] = $request->get($field);
-        }
-
-
+        
+        $data = new FieldValidator($this->model::$rules);
+        $data = $data->validate($request);
+//        \App\Debuger::dd($data);
         $p = $this->model::create($data);
-
-        return $this->dispatch($p);
+        return $p;
     }
 
     public function show(Request $request) {

@@ -3,7 +3,8 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController
-,Symfony\Component\HttpFoundation\Request;
+,    App\Storage,
+    Symfony\Component\HttpFoundation\Request;
 
 class HomeController extends BaseController {
 
@@ -11,7 +12,7 @@ class HomeController extends BaseController {
         $data = [
             'msg' => 'Bem vindo ao nosso sitema, se voce esta vendo esta mensagem o sistema esta ok'
         ];
-
+       
         $this->dispatch($data);
     }
 

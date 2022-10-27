@@ -7,35 +7,41 @@
 
 namespace App\Validator;
 
- use App\Validator\Validator,
-    Symfony\Component\HttpFoundation\Request;
+use App\Validator\Validator,
+    Symfony\Component\HttpFoundation\Request
+
+;
+
 /**
- * Description of FieldValidator
+ * Description of ImageValidator
  *
  * @author marcel
  */
-class FieldValidator implements Validator {
+class ImageValidator implements Validator {
+
     //put your code here
-    
     private $rules;
-    public function __construct($rules) {
-        $this->rules = $rules;
+
+    public function __construct() {
+        $this->rules = ['image' => 'image/'];
+//        $this->rules = $rules;
     }
-    
+
     public function validate(Request $request) {
-         $data = array();
+
+        $data = array();
         
         
 //        \Symfony\Component\HttpFoundation\File\UploadedFile::getMaxFilesize();
         foreach ($this->rules as $rule => $type) {
 //             \App\Debuger::dd($rule );
 //             \App\Debuger::dd($request->files->get($rule)->guessClientExtension());
-            if (isset($rule) && $rule != '' &&  $request->get($rule))
+            if (isset($rule) && $rule != '' &&  $request->files->has($rule))
               
-                if ($type == 'required' && $request->get($rule) == null)
-                    throw new Exception("Field $rule required");
+                if ($request->files->get($rule) && !str_contains($request->files->get($rule)->getMimeType(), $type))
+                    throw new Exception('Image not compactible');
                 else
-                    $data[$rule] = $request->get($rule);
+                    $data[] = $request->files->get($rule);
         }
 
 

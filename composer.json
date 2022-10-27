@@ -17,6 +17,8 @@
     "require": {
         "illuminate/database": "^8.83",
         "vlucas/phpdotenv": "^5.5",
-        "symfony/http-foundation": "^5.4"
+        "symfony/http-foundation": "^5.4",
+        "league/flysystem": "^2.5",
+        "symfony/mime": "^5.4"
     }
 }
