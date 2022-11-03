@@ -8,6 +8,63 @@
 <ul>
 <li>App - Onde fica os controllers e models do framework</li>
 
+as rotas são definidas em App/Routes/routes.php
+<br>
+<code>
+eg
+ METHGOD@PATH => Controller@Actiob
+ 'get@/index' => 'App\Controllers\HomeController@index',
+</code>
+<br>
+
+Para criar um Controller CRUD basta extender 
+<br>
+<code>
+class CategoryController extends CRUDController 
+
+e indicar qual o model   protected $model = 'App\Models\Category';
+
+</code>
+
+
+<br>
+
+Após isso basta criar uma model com a seguinte estrutura
+<br>
+<p>
+<code>
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use \App\Traits\IsTraceable;
+
+class Category extends Model {
+
+    use IsTraceable;
+
+
+    protected $table = 'category';
+    <br>
+    static $rules = [
+        'name' => 'required',
+        'parent_id' => 'required',
+    ];
+    <br>
+    protected $fillable = [
+        'name',
+        'parent_id'
+    ];
+    <br>
+    protected $perPage = 5;
+    static $onpage = 1;
+<br>
+}
+</code>
+</p>
+
+
+
 <li><Você pode construir as suas migrations dentro de build_database.php/li>
 </ul>
 <p>
